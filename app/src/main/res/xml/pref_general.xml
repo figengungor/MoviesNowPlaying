@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="@string/pref_language_default"
+        android:entries="@array/pref_language_options"
+        android:entryValues="@array/pref_language_values"
+        android:key="@string/pref_language_key"
+        android:title="@string/pref_language_label" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_region_default"
+        android:entries="@array/pref_region_options"
+        android:entryValues="@array/pref_region_values"
+        android:key="@string/pref_region_key"
+        android:title="@string/pref_region_label" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_notification_day_default"
+        android:entries="@array/pref_notification_day_options"
+        android:entryValues="@array/pref_notification_day_values"
+        android:key="@string/pref_notification_day_key"
+        android:title="@string/pref_notification_day_label" />
+
+</PreferenceScreen>

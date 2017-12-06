@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pref_language_options">
+        <item>@string/pref_language_label_english</item>
+        <item>@string/pref_language_label_turkish</item>
+        <item>@string/pref_language_label_german</item>
+    </string-array>
+
+    <string-array name="pref_language_values">
+        <item>@string/pref_language_english</item>
+        <item>@string/pref_language_turkish</item>
+        <item>@string/pref_language_german</item>
+    </string-array>
+
+    <string-array name="pref_region_options">
+        <item>@string/pref_region_label_united_states</item>
+        <item>@string/pref_region_label_turkey</item>
+        <item>@string/pref_region_label_germany</item>
+    </string-array>
+
+    <string-array name="pref_region_values">
+        <item>@string/pref_region_united_states</item>
+        <item>@string/pref_region_turkey</item>
+        <item>@string/pref_region_germany</item>
+    </string-array>
+
+    <string-array name="pref_notification_day_options">
+        <item>@string/pref_day_label_monday</item>
+        <item>@string/pref_day_label_tuesday</item>
+        <item>@string/pref_day_label_wednesday</item>
+        <item>@string/pref_day_label_thursday</item>
+        <item>@string/pref_day_label_friday</item>
+        <item>@string/pref_day_label_saturday</item>
+        <item>@string/pref_day_label_sunday</item>
+    </string-array>
+
+    <string-array name="pref_notification_day_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context="com.figengungor.moviesnowplaying.MovieDetailActivity">
+
+            <ImageView
+                android:id="@+id/imageViewBackDrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/content_description_backdrop_image"
+                app:layout_constraintDimensionRatio="780:439"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backdrop" />
+
+            <ImageView
+                android:id="@+id/imageViewPoster"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/content_description_poster_image"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewBackDrop"
+                app:layout_constraintDimensionRatio="185:278"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftVertical"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewBackDrop"
+                app:srcCompat="@drawable/poster" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewBookmark"
+                app:layout_constraintStart_toEndOf="@+id/imageViewPoster"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewBackDrop"
+                tools:text="@sample/movies.json/results/title" />
+
+            <TextView
+                android:id="@+id/textViewReleaseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+                app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+                tools:text="@sample/movies.json/results/release_date" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineLeftVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineRightVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+            <ImageButton
+                android:id="@+id/imageViewBookmark"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:contentDescription="@string/content_description_add_to_watchlist"
+                android:tint="@color/colorAccent"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineRightVertical"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewBackDrop"
+                app:srcCompat="@drawable/bookmark_plus" />
+
+            <android.support.constraint.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="textViewReleaseDate,imageViewPoster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/horizontalLineTop"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineRightVertical"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftVertical"
+                app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:isIndicator="true"
+                android:numStars="10"
+                android:rating="7"
+                app:layout_constraintEnd_toStartOf="@+id/textViewVoteAverage"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/guidelineLeftVertical"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftVertical"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalLineTop" />
+
+            <TextView
+                android:id="@+id/textViewVoteAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineRightVertical"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ratingBar"
+                app:layout_constraintTop_toTopOf="@+id/ratingBar"
+                tools:text="@sample/movies.json/results/vote_average" />
+
+            <View
+                android:id="@+id/horizontalLineBottom"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineRightVertical"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftVertical"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+            <TextView
+                android:id="@+id/textViewOverview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineRightVertical"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftVertical"
+                app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom"
+                tools:text="@sample/movies.json/results/overview" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
