@@ -16,6 +16,8 @@ import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by figengungor on 12/2/2017.
  */
@@ -31,7 +33,7 @@ public class MovieSyncUtils {
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
         int SYNC_INTERVAL_SECONDS = MovieDateUtils.getSyncIntervalSeconds(context);
         Log.d(TAG, "interval seconds: " + SYNC_INTERVAL_SECONDS);
-        int SYNC_FLEXTIME_SECONDS = SYNC_INTERVAL_SECONDS /3;
+        int SYNC_FLEXTIME_SECONDS = SYNC_INTERVAL_SECONDS + (int)TimeUnit.MINUTES.toSeconds(5);
         Job syncMoviesJob = dispatcher.newJobBuilder()
                 .setService(MovieFirebaseJobService.class)
                 .setTag(MOVIE_SYNC_TAG)
