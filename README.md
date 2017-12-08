@@ -1,5 +1,7 @@
 ## Movies: Now Playing
 
+![](https://github.com/figengungor/MoviesNowPlaying/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true)
+
 This project uses [**TMDb API**](https://www.themoviedb.org/documentation/api) to get movies on theaters.
 
 It displays movies with preferred **content language** and **region**.
@@ -17,7 +19,7 @@ You need to set your api key in your `gradle.properties` file as following:
 
     tmdbApiKey = your-api-key
 
-###Screenshot
+### Screenshot
 
 Movie List             |  Movie Detail
 :-------------------------:|:-------------------------:
