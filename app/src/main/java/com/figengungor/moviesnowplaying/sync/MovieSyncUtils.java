@@ -22,13 +22,9 @@ import com.firebase.jobdispatcher.Trigger;
 
 public class MovieSyncUtils {
 
-    //private static final int SYNC_INTERVAL_SECONDS = 30;
-    //private static final int SYNC_FLEXTIME_SECONDS = SYNC_INTERVAL_SECONDS / 3;
-    private static final String MOVIE_SYNC_TAG = "movie-sync";
     private static final String TAG = MovieSyncUtils.class.getSimpleName();
-
+    private static final String MOVIE_SYNC_TAG = "movie-sync";
     private static boolean sInitialized;
-
 
     public static void scheduleFirebaseJobDispatcherSync(@NonNull final Context context) {
         Driver driver = new GooglePlayDriver(context);

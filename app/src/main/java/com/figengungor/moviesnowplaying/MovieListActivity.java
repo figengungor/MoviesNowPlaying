@@ -22,9 +22,6 @@ import com.figengungor.moviesnowplaying.sync.MovieSyncUtils;
 
 public class MovieListActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler, LoaderManager.LoaderCallbacks<Cursor> {
 
-
-    private final String TAG = MovieListActivity.class.getSimpleName();
-
     public static final String[] MOVIE_LIST_PROJECTION = {
             MovieContract.MovieEntry.COLUMN_ID,
             MovieContract.MovieEntry.COLUMN_TITLE,

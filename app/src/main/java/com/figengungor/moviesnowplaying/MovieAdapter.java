@@ -18,7 +18,6 @@ import com.figengungor.moviesnowplaying.utilities.MovieDateUtils;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
-    private static final String TAG = MovieAdapter.class.getSimpleName();
     private final Context mContext;
     private final MovieAdapterOnClickHandler mClickHandler;
     private Cursor mCursor;

@@ -59,22 +59,8 @@ public final class NetworkUtils {
     }
 
     public static String getResponseFromHttpUrl(URL url) throws IOException {
-        //final StethoURLConnectionManager stethoManager = new StethoURLConnectionManager("Get Now Playing Movies");
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         urlConnection.setUseCaches(false);
-        //urlConnection.setRequestProperty(HEADER_ACCEPT_ENCODING, GZIP_ENCODING);
-        /*stethoManager.preConnect(urlConnection, null);
-
-        try {
-            urlConnection.connect();
-            stethoManager.postConnect();
-        } catch (IOException inner) {
-            // This must only be called after preConnect.  Failures before that cannot be
-            // represented since the request has not yet begun according to Stetho.
-            stethoManager.httpExchangeFailed(inner);
-            throw inner;
-        }*/
-
         try {
             InputStream in = urlConnection.getInputStream();
             Scanner scanner = new Scanner(in);
