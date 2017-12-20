@@ -11,6 +11,10 @@
 
     <style name="AppTheme.ActionBar.Transparent" parent="AppTheme">
         <item name="colorPrimary">@android:color/transparent</item>
+        <!--Overlay action bar (http://android.xsoftlab.net/training/basics/actionbar/overlaying.html)-->
+        <item name="windowActionBarOverlay">true</item>
+        <!--Remove shadow from action bar (https://stackoverflow.com/a/12246593/1463542)-->
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
 </resources>
