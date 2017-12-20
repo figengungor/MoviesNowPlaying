@@ -1,10 +1,14 @@
 package com.figengungor.moviesnowplaying.utilities;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.util.Log;
 
+import com.figengungor.moviesnowplaying.R;
+import com.figengungor.moviesnowplaying.data.ErrorEvent;
 import com.figengungor.moviesnowplaying.data.MovieContract.MovieEntry;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,30 +46,39 @@ public final class TmdbJsonUtils {
 
 
 
-    public static ContentValues[] getMovieContentValuesFromJson(String movieJsonStr) throws JSONException {
+    public static ContentValues[] getMovieContentValuesFromJson(Context context, String movieJsonStr) throws JSONException {
         JSONObject movieJson = new JSONObject(movieJsonStr);
 
         /* Is there an error? */
         if (movieJson.has(TMDB_STATUS_CODE)) {
             int errorCode = movieJson.getInt(TMDB_STATUS_CODE);
             String errorMessage = movieJson.getString(TMDB_STATUS_MESSAGE);
+            Log.d(TAG, errorCode+"");
+            Log.d(TAG, errorMessage);
 
             switch (errorCode) {
                 case TMDB_HTTP_OK_200:
                     break;
                 case TMDB_HTTP_NOT_FOUND_404:
                     /* Invalid id: The pre-requisite id is invalid or not found. */
-                    Log.e(TAG, errorMessage);
+                    EventBus.getDefault().post(new ErrorEvent(context.getString(R.string.error_server)));
+                    Log.e(TAG, errorCode+" : Http Not Found");
                     return null;
                 default:
                     /* Server probably down */
-                    Log.e(TAG, errorMessage);
+                    EventBus.getDefault().post(new ErrorEvent(context.getString(R.string.error_server)));
+                    Log.e(TAG, errorCode+" : Server probably down");
                     return null;
             }
         }
 
         JSONArray results = movieJson.getJSONArray(TMDB_RESULTS);
         int movieSize = results.length();
+
+        if(movieSize == 0) {
+            EventBus.getDefault().post(new ErrorEvent(context.getString(R.string.empty_data_message)));
+        }
+
         ContentValues[] contentValues = new ContentValues[movieSize];
         for(int i=0; i<movieSize; i++) {
             JSONObject movieObj = results.getJSONObject(i);

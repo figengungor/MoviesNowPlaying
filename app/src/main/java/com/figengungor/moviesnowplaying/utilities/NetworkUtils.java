@@ -37,9 +37,7 @@ public final class NetworkUtils {
     private static final String LANGUAGE_PARAM = "language"; //default en-US
     private static final String REGION_PARAM = "region";
 
-    private static final String HEADER_ACCEPT_ENCODING = "Accept-Encoding";
-    private static final String GZIP_ENCODING = "gzip";
-
+    private static final int TIMEOUT_SECONDS = 5000;
 
     public static URL getUrl(Context context) {
         Uri movieQueryUri = NOW_PLAYING_MOVIE_URI.buildUpon()
@@ -61,8 +59,18 @@ public final class NetworkUtils {
     public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         urlConnection.setUseCaches(false);
+        //https://stackoverflow.com/questions/2799938/httpurlconnection-timeout-question
+        urlConnection.setConnectTimeout(TIMEOUT_SECONDS);
+        InputStream in;
         try {
-            InputStream in = urlConnection.getInputStream();
+            if (urlConnection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST) {
+                in = urlConnection.getInputStream();
+            } else {
+                /* error from server
+                 * https://stackoverflow.com/questions/613307/read-error-response-body-in-java
+                 * */
+                in = urlConnection.getErrorStream();
+            }
             Scanner scanner = new Scanner(in);
             scanner.useDelimiter("\\A");
 

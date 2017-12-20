@@ -8,7 +8,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.figengungor.moviesnowplaying.data.MovieContract;
 import com.figengungor.moviesnowplaying.databinding.ActivityMovieDetailBinding;
@@ -90,7 +89,6 @@ public class MovieDetailActivity extends AppCompatActivity implements LoaderMana
         ImageUtils.loadImageUrl(posterPath, mDetailBinding.imageViewPoster, ImageUtils.ImageType.POSTER);
 
         String backdropPath = data.getString(INDEX_MOVIE_BACKDROP_PATH);
-        Log.d(TAG, ImageUtils.getImageUrl(backdropPath, ImageUtils.ImageType.BACKDROP));
         ImageUtils.loadImageUrl(backdropPath, mDetailBinding.imageViewBackDrop, ImageUtils.ImageType.BACKDROP);
 
         String title = data.getString(INDEX_MOVIE_TITLE);

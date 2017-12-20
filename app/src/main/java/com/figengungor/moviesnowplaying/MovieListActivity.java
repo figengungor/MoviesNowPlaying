@@ -3,6 +3,7 @@ package com.figengungor.moviesnowplaying;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -14,10 +15,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 
+import com.figengungor.moviesnowplaying.data.ErrorEvent;
 import com.figengungor.moviesnowplaying.data.MovieContract;
+import com.figengungor.moviesnowplaying.databinding.ActivityMovieListBinding;
 import com.figengungor.moviesnowplaying.sync.MovieSyncUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 
 public class MovieListActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler, LoaderManager.LoaderCallbacks<Cursor> {
@@ -39,23 +45,19 @@ public class MovieListActivity extends AppCompatActivity implements MovieAdapter
     private int mPosition = RecyclerView.NO_POSITION;
 
     private MovieAdapter mMovieAdapter;
-    private RecyclerView mRecyclerView;
-    private ProgressBar mLoadingIndicator;
+    private ActivityMovieListBinding mMovieListBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_list);
+        mMovieListBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie_list);
 
-        mLoadingIndicator = findViewById(R.id.progressBar);
-
-        mRecyclerView = findViewById(R.id.recyclerViewMovie);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
-        mRecyclerView.addItemDecoration(dividerItemDecoration);
-        mRecyclerView.setHasFixedSize(true);
+        mMovieListBinding.recyclerView.addItemDecoration(dividerItemDecoration);
+        mMovieListBinding.recyclerView.setHasFixedSize(true);
 
         mMovieAdapter = new MovieAdapter(this, this);
-        mRecyclerView.setAdapter(mMovieAdapter);
+        mMovieListBinding.recyclerView.setAdapter(mMovieAdapter);
 
         showLoading();
 
@@ -93,13 +95,21 @@ public class MovieListActivity extends AppCompatActivity implements MovieAdapter
     }
 
     private void showLoading() {
-        mRecyclerView.setVisibility(View.INVISIBLE);
-        mLoadingIndicator.setVisibility(View.VISIBLE);
+        mMovieListBinding.recyclerView.setVisibility(View.INVISIBLE);
+        mMovieListBinding.errorLayout.errorView.setVisibility(View.INVISIBLE);
+        mMovieListBinding.progressBar.setVisibility(View.VISIBLE);
     }
 
     private void showMovieDataView() {
-        mRecyclerView.setVisibility(View.VISIBLE);
-        mLoadingIndicator.setVisibility(View.INVISIBLE);
+        mMovieListBinding.recyclerView.setVisibility(View.VISIBLE);
+        mMovieListBinding.progressBar.setVisibility(View.INVISIBLE);
+        mMovieListBinding.errorLayout.errorView.setVisibility(View.INVISIBLE);
+    }
+
+    private void showErrorView() {
+        mMovieListBinding.recyclerView.setVisibility(View.INVISIBLE);
+        mMovieListBinding.progressBar.setVisibility(View.INVISIBLE);
+        mMovieListBinding.errorLayout.errorView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -122,12 +132,35 @@ public class MovieListActivity extends AppCompatActivity implements MovieAdapter
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         mMovieAdapter.swapCursor(data);
         if (mPosition == RecyclerView.NO_POSITION) mPosition = 0;
-        mRecyclerView.smoothScrollToPosition(mPosition);
+        mMovieListBinding.recyclerView.smoothScrollToPosition(mPosition);
         if (data.getCount() != 0) showMovieDataView();
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         mMovieAdapter.swapCursor(null);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(ErrorEvent event) {
+        /* Do something */
+        mMovieListBinding.errorLayout.textViewErrorMessage.setText(event.getMessage());
+        showErrorView();
+    }
+
+    public void onRetry(View view) {
+        MovieSyncUtils.startImmediateSync(this);
     }
 }

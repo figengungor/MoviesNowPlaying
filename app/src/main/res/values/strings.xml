@@ -53,6 +53,12 @@
     <string name="content_description_backdrop_image">Backdrop Image</string>
     <string name="content_description_poster_image">Poster Image</string>
     <string name="content_description_add_to_watchlist">Add to Watchlist</string>
+    <string name="retry">Retry</string>
+    <string name="no_data_found">No data found. Try again.</string>
+    <string name="error_server">Server Error</string>
+    <string name="empty_data_message">No Data Found</string>
+    <string name="error_connection_timeout">Connection Timeout</string>
+    <string name="error_no_internet_connection">No Internet Connection</string>
 
 
 </resources>
