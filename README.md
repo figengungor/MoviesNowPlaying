@@ -25,7 +25,11 @@ Movie List             |  Movie Detail
 :-------------------------:|:-------------------------:
 ![](art/movie_list.png)  |  ![](art/movie_detail.png)
 
+### Status & ActionBar Transparency & Overlay Support
 
+API 16             |  API 19             |  API 24
+:-------------------------:|:-------------------------:|:-------------------------:
+![](art/api16_status_appbar.png)  |  ![](art/api19_status_appbar.png)  |  ![](art/api24_status_appbar.png)
 
 
 
