@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -89,9 +91,15 @@ public class MovieListActivity extends AppCompatActivity implements MovieAdapter
     }
 
     @Override
-    public void onClick(int movieId) {
+    public void onClick(int movieId, View poster, View title, View releaseDate) {
+        Pair<View, String> p1 = Pair.create(poster, getString(R.string.poster_transition_name));
+        Pair<View, String> p2 = Pair.create(title, getString(R.string.title_transition_name));
+        Pair<View, String> p3 = Pair.create(releaseDate, getString(R.string.releaseDate_transition_name));
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(this, p1, p2, p3);
+
         startActivity(new Intent(this, MovieDetailActivity.class)
-                .setData(MovieContract.MovieEntry.buildMovieUriWithId(movieId)));
+                .setData(MovieContract.MovieEntry.buildMovieUriWithId(movieId)), options.toBundle());
     }
 
     private void showLoading() {

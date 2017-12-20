@@ -23,7 +23,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     private Cursor mCursor;
 
     public interface MovieAdapterOnClickHandler {
-        void onClick(int movieId);
+        void onClick(int movieId, View poster, View title, View releaseDate);
     }
 
     public MovieAdapter(Context context, MovieAdapterOnClickHandler clickHandler) {
@@ -75,7 +75,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             title = itemView.findViewById(R.id.textViewTitle);
             releaseDate = itemView.findViewById(R.id.textViewReleaseDate);
             poster = itemView.findViewById(R.id.imageViewPoster);
-
             itemView.setOnClickListener(this);
         }
 
@@ -84,7 +83,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             int position = getAdapterPosition();
             mCursor.moveToPosition(position);
             int movieId = mCursor.getInt(MovieListActivity.INDEX_MOVIE_ID);
-            mClickHandler.onClick(movieId);
+            mClickHandler.onClick(movieId, poster, title, releaseDate);
         }
     }
 
