@@ -3,6 +3,7 @@
     <style name="AppTheme.ActionBar.Transparent" parent="AppTheme">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="colorPrimary">@android:color/transparent</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
 </resources>

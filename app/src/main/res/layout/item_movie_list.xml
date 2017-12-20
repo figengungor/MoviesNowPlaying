@@ -9,6 +9,7 @@
         android:id="@+id/imageViewPoster"
         android:layout_width="100dp"
         android:layout_height="0dp"
+        android:transitionName="poster"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="h,185:278"
         app:layout_constraintStart_toStartOf="parent"

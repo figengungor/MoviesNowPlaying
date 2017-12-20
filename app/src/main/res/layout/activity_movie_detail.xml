@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:adjustViewBounds="true"
+                android:transitionName="poster"
                 android:contentDescription="@string/content_description_poster_image"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewBackDrop"
                 app:layout_constraintDimensionRatio="185:278"
