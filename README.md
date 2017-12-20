@@ -32,6 +32,8 @@ API 16             |  API 19             |  API 24
 ![](art/api16_status_appbar.png)  |  ![](art/api19_status_appbar.png)  |  ![](art/api24_status_appbar.png)
 
 
+### Shared Element Transition
 
+![](art/shared_element_transition.gif)
 
 
