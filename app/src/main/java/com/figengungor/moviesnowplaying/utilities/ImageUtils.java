@@ -22,34 +22,25 @@ public class ImageUtils {
     private static final String POSTER_URL = IMAGE_URL + PATH_POSTER_W185;
     private static final String BACKDROP_URL = IMAGE_URL + PATH_BACKDROP_W780;
 
-    public static String getImageUrl(String imagePath, ImageType imageType) {
+
+    public static void loadImageUrl(String imagePath, ImageView imageView, ImageType imageType) {
+        String url;
         switch (imageType) {
             case POSTER:
-                return POSTER_URL + imagePath;
+                url = POSTER_URL + imagePath;
+                break;
             case BACKDROP:
-                return BACKDROP_URL + imagePath;
+                url = BACKDROP_URL + imagePath;
+                break;
             default:
                 throw new UnsupportedOperationException("ImageType not supported");
         }
-    }
 
-
-    public static void loadImageUrl(String imagePath, ImageView imageView, ImageType imageType) {
-        String url = getImageUrl(imagePath, imageType);
-        switch (imageType) {
-            case POSTER:
-                Picasso.with(imageView.getContext())
-                        .load(url)
-                        .placeholder(R.drawable.placeholder_poster)
-                        .into(imageView);
-                break;
-            case BACKDROP:
-                Picasso.with(imageView.getContext())
-                        .load(url)
-                        .placeholder(R.drawable.placeholder_backdrop)
-                        .into(imageView);
-                break;
-        }
+        Picasso.with(imageView.getContext())
+                .load(url)
+                .noFade()
+                .placeholder(R.drawable.placeholder_backdrop)
+                .into(imageView);
     }
 
 
