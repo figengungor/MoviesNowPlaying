@@ -8,3 +8,4 @@
 .externalNativeBuild
 gradle.properties
 *.apk
+/release
