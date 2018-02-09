@@ -37,3 +37,8 @@ API 16             |  API 19             |  API 24
 ![](art/shared_element_transition.gif)
 
 
+### Credits
+
+Google Developer Challenge ScholarShip for Android Track
+
+#Udacity
