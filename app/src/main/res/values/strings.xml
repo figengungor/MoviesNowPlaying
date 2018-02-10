@@ -3,12 +3,12 @@
 
     <!-- Language Preferences -->
     <string name="pref_language_key" translatable="false">language</string>
-    <string name="pref_language_default" translatable="false">us</string>
+    <string name="pref_language_default" translatable="false">en</string>
     <string name="pref_language_label">Language</string>
 
     <!-- Region Preferences -->
     <string name="pref_region_key" translatable="false">region</string>
-    <string name="pref_region_default" translatable="false">us</string>
+    <string name="pref_region_default" translatable="false">US</string>
     <string name="pref_region_label">Region</string>
 
     <!-- Notification Day Preferences -->

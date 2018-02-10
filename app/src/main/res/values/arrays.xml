@@ -26,8 +26,10 @@
         <item>日本語 (Japanese)</item>
     </string-array>
 
+
+    <!--https://www.andiamo.co.uk/resources/iso-language-codes-->
     <string-array name="pref_language_values" translatable="false">
-        <item>us</item>
+        <item>en</item>
         <item>tr</item>
         <item>cs</item>
         <item>da</item>
@@ -51,8 +53,10 @@
         <item>ja</item>
     </string-array>
 
+
     <string-array name="pref_region_options">
         <item>United States of America</item>
+        <item>United Kingdom</item>
         <item>Turkey</item>
         <item>Czech Republic</item>
         <item>Denmark</item>
@@ -74,6 +78,33 @@
         <item>Korea</item>
         <item>China</item>
         <item>Japan</item>
+    </string-array>
+
+    <!--https://en.wikipedia.org/wiki/ISO_3166-1-->
+    <string-array name="pref_region_values" translatable="false">
+        <item>US</item>
+        <item>GB</item>
+        <item>TR</item>
+        <item>CZ</item>
+        <item>DK</item>
+        <item>DE</item>
+        <item>GR</item>
+        <item>ES</item>
+        <item>FR</item>
+        <item>HR</item>
+        <item>IT</item>
+        <item>HU</item>
+        <item>NL</item>
+        <item>NO</item>
+        <item>PL</item>
+        <item>RU</item>
+        <item>PT</item>
+        <item>SI</item>
+        <item>FI</item>
+        <item>SE</item>
+        <item>KR</item>
+        <item>CN</item>
+        <item>JP</item>
     </string-array>
 
     <string-array name="pref_notification_day_options">

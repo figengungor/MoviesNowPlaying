@@ -11,7 +11,7 @@
     <ListPreference
         android:defaultValue="@string/pref_region_default"
         android:entries="@array/pref_region_options"
-        android:entryValues="@array/pref_language_values"
+        android:entryValues="@array/pref_region_values"
         android:key="@string/pref_region_key"
         android:title="@string/pref_region_label" />
 
