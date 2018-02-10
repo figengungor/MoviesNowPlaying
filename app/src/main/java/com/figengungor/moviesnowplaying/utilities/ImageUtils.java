@@ -25,12 +25,15 @@ public class ImageUtils {
 
     public static void loadImageUrl(String imagePath, ImageView imageView, ImageType imageType) {
         String url;
+        int placeholderResId;
         switch (imageType) {
             case POSTER:
                 url = POSTER_URL + imagePath;
+                placeholderResId = R.drawable.placeholder_poster;
                 break;
             case BACKDROP:
                 url = BACKDROP_URL + imagePath;
+                placeholderResId = R.drawable.placeholder_backdrop;
                 break;
             default:
                 throw new UnsupportedOperationException("ImageType not supported");
@@ -39,7 +42,7 @@ public class ImageUtils {
         Picasso.with(imageView.getContext())
                 .load(url)
                 .noFade()
-                .placeholder(R.drawable.placeholder_backdrop)
+                .placeholder(placeholderResId)
                 .into(imageView);
     }
 
