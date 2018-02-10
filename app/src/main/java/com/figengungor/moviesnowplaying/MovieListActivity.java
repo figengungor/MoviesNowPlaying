@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +45,7 @@ public class MovieListActivity extends AppCompatActivity implements MovieAdapter
 
 
     private static final int ID_MOVIE_LOADER = 1;
+    private static final String TAG = MovieListActivity.class.getSimpleName();
     private int mPosition = RecyclerView.NO_POSITION;
 
     private MovieAdapter mMovieAdapter;
@@ -60,6 +62,8 @@ public class MovieListActivity extends AppCompatActivity implements MovieAdapter
 
         mMovieAdapter = new MovieAdapter(this, this);
         mMovieListBinding.recyclerView.setAdapter(mMovieAdapter);
+
+        EventBus.getDefault().register(this);
 
         showLoading();
 
@@ -150,20 +154,16 @@ public class MovieListActivity extends AppCompatActivity implements MovieAdapter
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroy() {
         EventBus.getDefault().unregister(this);
+        super.onDestroy();
+
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ErrorEvent event) {
         /* Do something */
+        Log.e(TAG, "onMessageEvent: " + event.getMessage());
         mMovieListBinding.errorLayout.textViewErrorMessage.setText(event.getMessage());
         showErrorView();
     }
