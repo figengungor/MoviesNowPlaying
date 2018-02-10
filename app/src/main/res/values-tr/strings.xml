@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Vizyondaki Filmler</string>
+
+    <!-- Language Preferences -->
+    <string name="pref_language_label">Dil</string>
+
+    <!-- Region Preferences -->
+    <string name="pref_region_label">Bölge</string>
+
+    <!-- Notification Day Preferences -->
+    <string name="pref_notification_day_label">Bildirim günü</string>
+
+    <string name="pref_day_label_monday">Pazartesi</string>
+    <string name="pref_day_label_tuesday">Salı</string>
+    <string name="pref_day_label_wednesday">Çarşamba</string>
+    <string name="pref_day_label_thursday">Perşembe</string>
+    <string name="pref_day_label_friday">Cuma</string>
+    <string name="pref_day_label_saturday">Cumartesi</string>
+    <string name="pref_day_label_sunday">Pazar</string>
+
+    <!-- Menu -->
+    <string name="settings">Ayarlar</string>
+    <string name="action_settings">@string/settings</string>
+    <string name="action_refresh">Yenile</string>
+
+    <!-- Notification -->
+    <string name="movie_notification_channel_name">Haftalık Film Hatırlatıcı</string>
+    <string name="movie_notification_content_title">Vizyondaki Filmler</string>
+    <string name="movie_notification_content_text">Vizyona girmiş filmlere bir göz atın!</string>
+
+    <!-- Accessibility -->
+    <string name="content_description_backdrop_image">Arkaplan resmi</string>
+    <string name="content_description_poster_image">Poster</string>
+    <string name="content_description_add_to_watchlist">Paylaş</string>
+
+    <!-- Error Handling -->
+    <string name="retry">Tekrar dene</string>
+    <string name="no_data_found">Veri bulunamadı. Tekrar denyin.</string>
+    <string name="error_server">Servis hatası</string>
+    <string name="empty_data_message">Veri bulunamadı.</string>
+    <string name="error_connection_timeout">Bağlantı zaman aşımına uğradı.</string>
+    <string name="error_no_internet_connection">Internet bağlantısı yok.</string>
+
+</resources>
