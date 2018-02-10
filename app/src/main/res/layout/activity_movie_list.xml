@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:visibility="invisible" />
 
-        <include layout="@layout/layout_error" android:id="@+id/errorLayout" />
+        <include layout="@layout/layout_error" android:id="@+id/errorLayout" android:visibility="gone" />
 
     </FrameLayout>
 </layout>
