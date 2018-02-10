@@ -37,7 +37,7 @@
     <!-- Accessibility -->
     <string name="content_description_backdrop_image">Backdrop Image</string>
     <string name="content_description_poster_image">Poster Image</string>
-    <string name="content_description_add_to_watchlist">Add to Watchlist</string>
+    <string name="content_description_share">Share</string>
 
     <!-- Error Handling -->
     <string name="retry">Retry</string>
@@ -54,5 +54,6 @@
 
     <!-- Others -->
     <string name="content_authority" translatable="false">com.figengungor.moviesnowplaying</string>
+    <string name="choosesharingplatform">Choose sharing platform</string>
 
 </resources>

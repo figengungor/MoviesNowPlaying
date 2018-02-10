@@ -31,7 +31,7 @@
     <!-- Accessibility -->
     <string name="content_description_backdrop_image">Arkaplan resmi</string>
     <string name="content_description_poster_image">Poster</string>
-    <string name="content_description_add_to_watchlist">Paylaş</string>
+    <string name="content_description_share">Paylaş</string>
 
     <!-- Error Handling -->
     <string name="retry">Tekrar dene</string>
@@ -40,5 +40,7 @@
     <string name="empty_data_message">Veri bulunamadı.</string>
     <string name="error_connection_timeout">Bağlantı zaman aşımına uğradı.</string>
     <string name="error_no_internet_connection">Internet bağlantısı yok.</string>
+
+    <string name="choosesharingplatform">Paylaşma ortamını seçiniz</string>
 
 </resources>

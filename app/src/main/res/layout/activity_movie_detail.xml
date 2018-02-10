@@ -48,7 +48,7 @@
                 android:layout_marginTop="8dp"
                 android:transitionName="@string/title_transition_name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                app:layout_constraintEnd_toStartOf="@+id/imageViewBookmark"
+                app:layout_constraintEnd_toStartOf="@+id/shareButton"
                 app:layout_constraintStart_toEndOf="@+id/imageViewPoster"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewBackDrop"
                 tools:text="@sample/movies.json/results/title" />
@@ -80,16 +80,16 @@
                 app:layout_constraintGuide_end="16dp" />
 
             <ImageButton
-                android:id="@+id/imageViewBookmark"
+                android:id="@+id/shareButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:background="@null"
-                android:contentDescription="@string/content_description_add_to_watchlist"
+                android:contentDescription="@string/content_description_share"
                 android:tint="@color/colorAccent"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightVertical"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewBackDrop"
-                app:srcCompat="@drawable/bookmark_plus" />
+                app:srcCompat="@drawable/ic_share_black_24dp" />
 
             <android.support.constraint.Barrier
                 android:id="@+id/barrier"
